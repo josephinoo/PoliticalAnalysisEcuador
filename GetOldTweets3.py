@@ -1,42 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""To use this script you can pass the following attributes:
-       querysearch: a query text to be matched
-          username: a username or a list of usernames (comma or space separated)
-                    of a specific twitter account(s) (with or without @)
-username-from-file: a file with a list of usernames,
-             since: a lower bound date in UTC (yyyy-mm-dd)
-             until: an upper bound date in UTC (yyyy-mm-dd) (not included)
-              near: a reference location area from where tweets were generated
-            within: a distance radius from "near" location (e.g. 15mi)
-         toptweets: only the tweets provided as top tweets by Twitter (no parameters required)
-         maxtweets: the maximum number of tweets to retrieve
-              lang: the language of tweets
-            output: a filename to export the results (default is "output_got.csv")
 
-Examples:
-
-# Example 1 - Get tweets by query search:
-GetOldTweets3 --querysearch "europe refugees" --maxtweets 10
-
-# Example 1 - Get the last 10 top tweets by username:
-GetOldTweets3 --username "barackobama" --toptweets --maxtweets 10
-
-# Example 3 - Get tweets by username and bound dates (until date is not included):
-GetOldTweets3 --username "barackobama" --since 2015-09-10 --until 2015-09-12 --maxtweets 10
-
-# Example 4 - Get tweets by several usernames:
-GetOldTweets3 --username "BarackObama,AngelaMerkeICDU" --usernames-from-file userlist.txt --maxtweets 10
-
-# Example 5 - Get tweets by language:
-GetOldTweets3 --querysearch "bitcoin" --lang cn --maxtweets 10 
-
-# Example 6 - Get tweets by place:
-GetOldTweets3 --querysearch "bitcoin" --near "Berlin, Germany" --within 25km --maxtweets 10 
-
-# Example 7 - Get tweets by geo coordinates:
-GetOldTweets3 --querysearch "museum" --near "55.75, 37.61" --within 40km --maxtweets 10 
-"""
 
 import os, sys, re, getopt
 import traceback
@@ -164,7 +126,7 @@ def main(argv):
             else:
                 tweetCriteria.username = usernames.pop()
 
-        outputFile = open(outputFileName, "w+", encoding="utf8")
+        outputFile = open(outputFileName, "a", encoding="utf8")
         outputFile.write('date,username,to,replies,retweets,favorites,text,geo,mentions,hashtags,id,permalink\n')
 
         cnt = 0
