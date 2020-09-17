@@ -7,6 +7,7 @@ def tweets_old(query, since , until,numberTweets,filename="output.csv"):
     tweets = got.manager.TweetManager.getTweets(tweetCriteria)
     fileTweet=open(filename,"a")
     for tweet in tweets:
-        filename.write(tweets+"\n")
+        filename.write(tweet.text+"\n")
+        print(tweet.text)
     return tweets   
     
