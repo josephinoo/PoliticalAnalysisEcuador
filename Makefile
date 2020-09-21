@@ -1,19 +1,16 @@
 
+GREEN := $(shell tput -Txterm setaf 2)
+YELLOW := $(shell tput -Txterm setaf 3)
+RESET := $(shell tput -Txterm sgr0)
 PYTHON = python3
 
-.PHONY = help setup test run clean
 
-
-FILES = input output
-
-
-.DEFAULT_GOAL = help
-help:
-	@echo "---------------HELP-----------------"
-	@echo "To setup the project type make setup"
-	@echo "To test the project type make test"
-	@echo "To run the project type make run"
-	@echo "----------"
 run:
+	@echo "${YELLOW}--------------------------RUNNING----------------------------${RESET}"
 	${PYTHON} main.py
 
+packages:
+	@echo "${YELLOW}-------------------------INSTALLING------------------------------${RESET}"
+	pip3 install -r requirements.txt
+	@echo "${GREEN}[+]installed packages${RESET}"
+	@echo "${YELLOW}-----------------------------------------------------------------${RESET}"

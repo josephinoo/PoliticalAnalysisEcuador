@@ -9,5 +9,6 @@ def tweets_old(query, since , until,numberTweets,filename="output.csv"):
     for tweet in tweets:
         filename.write(tweet.text+"\n")
         print(tweet.text)
+    fileTweet.close()
     return tweets   
     
